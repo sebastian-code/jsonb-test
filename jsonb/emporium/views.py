@@ -61,7 +61,7 @@ def index(request):
     else:
         form = SearchForm()
 
-    return render(request, 'index.html', {
+    return render(request, 'pages/home.html', {
         'display_results': display_results,
         'bargains': list(bargains),
         'form': form,
