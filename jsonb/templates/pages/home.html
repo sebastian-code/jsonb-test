@@ -1,1 +1,91 @@
 {% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-md-10">
+        <div class="content">
+          <h2>Emporium</h2><br>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10">
+        <div class="content">
+          <h3>Query Inventory</h3>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <form action="/" method="post" class="form">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-2">
+            {{ form.supplier_id.label_tag }}
+          </div>
+          <div class="col-md-8">
+            {{ form.supplier_id.errors }}
+            {{ form.supplier_id }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            {{ form.filter_text.label_tag }}
+          </div>
+          <div class="col-md-8">
+            {{ form.filter_text }}
+            {{ form.filter_text.errors }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            {{ form.use_contains.label_tag }}
+          </div>
+          <div class="col-md-8">
+            {{ form.use_contains.errors }}
+            {{ form.use_contains }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <input type="submit" value="Search" />
+          </div>
+        </div>
+      </form>
+      {% if display_results %}
+        <br>
+        {% if bargains %}
+          <p>Matching bargains:</p><br>
+          <div class="row">
+            <div class="col-md-2"><b>Description</b></div>
+            <div class="col-md-2"><b>Price</b></div>
+            <div class="col-md-2"><b>Sale Price</b></div>
+            <div class="col-md-2"><b>Color</b></div>
+            <div class="col-md-2"><b>Acquire Cost</b></div>
+          </div>
+          {% for bargain in bargains %}
+            <div class="row">
+              <div class="col-md-2">
+                {{ bargain.description }}
+              </div>
+              <div class="col-md-2">
+                {{ bargain.price }}
+              </div>
+              <div class="col-md-2">
+                {{ bargain.sale_price }}
+              </div>
+              <div class="col-md-2">
+                {{ bargain.color }}
+              </div>
+              <div class="col-md-2">
+                {{ bargain.acquire_cost }}
+              </div>
+            </div>
+            {% endfor %}
+        {% else %}
+          <p>No matching bargains found</p>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+{% endblock content %}
