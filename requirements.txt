@@ -9,7 +9,7 @@ psycopg2==2.6.1
 sqlparse==0.1.18
 
 # django-debug-toolbar that works with Django 1.5+
-django-debug-toolbar==1.4
+django-debug-toolbar==1.11.1
 
 # Better console
 ipython==4
