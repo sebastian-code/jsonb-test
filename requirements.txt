@@ -12,4 +12,4 @@ sqlparse==0.1.18
 django-debug-toolbar==1.4
 
 # Better console
-ipython==4
+ipython==7.16.3
